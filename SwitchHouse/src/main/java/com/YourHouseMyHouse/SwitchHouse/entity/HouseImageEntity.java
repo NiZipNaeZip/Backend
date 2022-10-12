@@ -13,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "HouseImage")
-public class HouseImage extends BaseTimeEntity {
+public class HouseImageEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +26,8 @@ public class HouseImage extends BaseTimeEntity {
     @ManyToOne
     @JoinColumn(name="house_id")
     private HouseEntity house;
+
+    public void setHouse(HouseEntity house) {
+        this.house = house;
+    }
 }

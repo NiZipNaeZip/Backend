@@ -1,9 +1,6 @@
 package com.YourHouseMyHouse.SwitchHouse.dto.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -14,6 +11,7 @@ import javax.persistence.Id;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class CreateUserDTO {
     
     private String loginId;
@@ -22,8 +20,8 @@ public class CreateUserDTO {
     
     //주소 부분
     private Long postalCode;
-    private Long address;
-    private Long detailedAddress;
+    private String address;
+    private String detailedAddress;
     
     //인증
     private Boolean certified;
