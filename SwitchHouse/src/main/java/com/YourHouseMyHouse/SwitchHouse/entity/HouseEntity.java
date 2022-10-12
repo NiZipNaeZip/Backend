@@ -1,10 +1,7 @@
 package com.YourHouseMyHouse.SwitchHouse.entity;
 
 import com.YourHouseMyHouse.SwitchHouse.common.entity.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -14,6 +11,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity(name = "House")
 public class HouseEntity extends BaseTimeEntity {
 
@@ -39,17 +37,29 @@ public class HouseEntity extends BaseTimeEntity {
     @Column(length = 255)
     private String houseIntroduction;
 
+    //오픈 카카오톡 링크
+    @Column(length = 50)
+    private String messageLink;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
     @OneToMany(mappedBy = "house", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @Builder.Default
-    private List<HouseImage> houseImageList = new ArrayList<>();
+    private List<HouseImageEntity> houseImageList = new ArrayList<>();
 
     @OneToOne(mappedBy = "house", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private HouseInfoEntity houseInfo;
 
     @OneToOne(mappedBy = "house", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private HouseAmenitiesEntity houseAmenities;
+    private HouseAmenityEntity houseAmenities;
+
+    @OneToMany(mappedBy = "house", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<PrecautionEntity> precautionList = new ArrayList<>();
+
+    public void setHouseInfo(HouseInfoEntity houseInfo) {
+        this.houseInfo = houseInfo;
+    }
 }

@@ -1,10 +1,7 @@
 package com.YourHouseMyHouse.SwitchHouse.entity;
 
 import com.YourHouseMyHouse.SwitchHouse.common.entity.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,15 +9,16 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "HouseAmenities")
-public class HouseAmenitiesEntity extends BaseTimeEntity {
+@ToString
+@Entity(name = "HouseAmenity")
+public class HouseAmenityEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long houseAmenitiesId;
 
     @Column(length = 10)
-    private Boolean Bed;
+    private Boolean bed;
 
     @Column(length = 10)
     private Boolean bathtub;
@@ -59,10 +57,10 @@ public class HouseAmenitiesEntity extends BaseTimeEntity {
     private Boolean tableware;
 
     @Column(length = 10)
-    private Boolean Dryer;
+    private Boolean dryer;
 
     @Column(length = 10)
-    private Boolean Iron;
+    private Boolean iron;
 
     @Column(length = 10)
     private Boolean washingMachine;
@@ -70,4 +68,8 @@ public class HouseAmenitiesEntity extends BaseTimeEntity {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "house_id")
     private HouseEntity house;
+
+    public void setHouse(HouseEntity house) {
+        this.house = house;
+    }
 }
