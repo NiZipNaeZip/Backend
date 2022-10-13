@@ -10,20 +10,13 @@ import javax.persistence.Column;
 @AllArgsConstructor
 @ToString
 public class HouseAmenityDTO {
-    private Boolean bed;
-    private Boolean bathtub;
-    private Boolean kitchen;
-    private Boolean elevator;
-    private Boolean microwave;
-    private Boolean refrigerator;
-    private Boolean airConditioner;
-    private Boolean wifi;
-    private Boolean tv;
-    private Boolean hotWater;
-    private Boolean waterPurifier;
-    private Boolean cookingUtensils;
-    private Boolean tableware;
-    private Boolean dryer;
-    private Boolean iron;
-    private Boolean washingMachine;
+
+    private Boolean beach;
+    private Boolean olleTrail;
+    private Boolean pickingTangerine;
+    private Boolean activity;
+    private Boolean sportsEquipment;
+    private Boolean waterPlayEquipment;
+    private Boolean culturalLife;
+    private Boolean hotPlace;
 }

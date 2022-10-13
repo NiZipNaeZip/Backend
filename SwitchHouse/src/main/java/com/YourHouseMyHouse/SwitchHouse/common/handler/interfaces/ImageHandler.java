@@ -8,4 +8,5 @@ import java.util.List;
 public interface ImageHandler {
 
     public List<HouseImageEntity> parseFileInfoImage(List<MultipartFile> multipartFiles) throws Exception;
+    List<String> exactFilePath(List<HouseImageEntity> houseImageEntityList);
 }

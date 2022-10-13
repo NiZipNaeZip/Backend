@@ -2,10 +2,7 @@ package com.YourHouseMyHouse.SwitchHouse.entity;
 
 import com.YourHouseMyHouse.SwitchHouse.common.entity.AlarmStatus;
 import com.YourHouseMyHouse.SwitchHouse.common.entity.BaseTimeEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
@@ -15,6 +12,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 @Entity(name = "Alarm")
 public class AlarmEntity extends BaseTimeEntity {
 
@@ -43,4 +41,11 @@ public class AlarmEntity extends BaseTimeEntity {
     @JoinColumn(name = "receiver_id")
     private UserEntity receiver;
 
+    public void acceptNotice() {
+        this.alarmStatus = AlarmStatus.ACCEPT;
+    }
+
+    public void rejectNotice() {
+        this.alarmStatus = AlarmStatus.REJECT;
+    }
 }

@@ -6,9 +6,14 @@ import com.YourHouseMyHouse.SwitchHouse.entity.AlarmEntity;
 import com.YourHouseMyHouse.SwitchHouse.repository.AlarmRepository;
 import com.YourHouseMyHouse.SwitchHouse.service.interfaces.AlarmService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AlarmServiceImpl implements AlarmService {
@@ -24,12 +29,26 @@ public class AlarmServiceImpl implements AlarmService {
     }
 
     @Override
-    public void acceptNotice() {
+    @Transactional
+    public void acceptNotice(Long alarmId) {
+        Optional<AlarmEntity> alarmEntityOptional = alarmRepository.findById(alarmId);
 
+        AlarmEntity alarmEntity = alarmEntityOptional.orElseThrow(RuntimeException::new);
+
+        log.info(alarmEntity.toString());
+
+        alarmEntity.acceptNotice();
+
+        log.info(alarmEntity.toString());
     }
 
     @Override
-    public void refuseNotice() {
+    @Transactional
+    public void refuseNotice(Long alarmId) {
+        Optional<AlarmEntity> alarmEntityOptional = alarmRepository.findById(alarmId);
 
+        AlarmEntity alarmEntity = alarmEntityOptional.orElseThrow(RuntimeException::new);
+
+        alarmEntity.rejectNotice();
     }
 }

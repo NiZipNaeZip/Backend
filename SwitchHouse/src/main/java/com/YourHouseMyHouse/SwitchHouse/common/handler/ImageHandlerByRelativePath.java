@@ -1,6 +1,7 @@
 package com.YourHouseMyHouse.SwitchHouse.common.handler;
 
 import com.YourHouseMyHouse.SwitchHouse.common.handler.interfaces.ImageHandler;
+import com.YourHouseMyHouse.SwitchHouse.entity.HouseEntity;
 import com.YourHouseMyHouse.SwitchHouse.entity.HouseImageEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -93,5 +94,16 @@ public class ImageHandlerByRelativePath implements ImageHandler {
         }
 
         return houseImageEntityList;
+    }
+
+    @Override
+    public List<String> exactFilePath(List<HouseImageEntity> houseImageEntityList) {
+        List<String> stringList = new ArrayList<>();
+
+        for(HouseImageEntity houseImage : houseImageEntityList) {
+            stringList.add(houseImage.getFilePath());
+        }
+
+        return stringList;
     }
 }

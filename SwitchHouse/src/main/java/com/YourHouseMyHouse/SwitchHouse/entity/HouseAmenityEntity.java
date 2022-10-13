@@ -15,55 +15,23 @@ public class HouseAmenityEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long houseAmenitiesId;
+    private Long houseAmenityId;
 
-    @Column(length = 10)
-    private Boolean bed;
+    private Boolean beach;
 
-    @Column(length = 10)
-    private Boolean bathtub;
+    private Boolean olleTrail;
 
-    @Column(length = 10)
-    private Boolean kitchen;
+    private Boolean pickingTangerine;
 
-    @Column(length = 10)
-    private Boolean elevator;
+    private Boolean activity;
 
-    @Column(length = 10)
-    private Boolean microwave;
+    private Boolean sportsEquipment;
 
-    @Column(length = 10)
-    private Boolean refrigerator;
+    private Boolean waterPlayEquipment;
 
-    @Column(length = 10)
-    private Boolean airConditioner;
+    private Boolean culturalLife;
 
-    @Column(length = 10)
-    private Boolean wifi;
-
-    @Column(length = 10)
-    private Boolean tv;
-
-    @Column(length = 10)
-    private Boolean hotWater;
-
-    @Column(length = 10)
-    private Boolean waterPurifier;
-
-    @Column(length = 10)
-    private Boolean cookingUtensils;
-
-    @Column(length = 10)
-    private Boolean tableware;
-
-    @Column(length = 10)
-    private Boolean dryer;
-
-    @Column(length = 10)
-    private Boolean iron;
-
-    @Column(length = 10)
-    private Boolean washingMachine;
+    private Boolean hotPlace;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "house_id")

@@ -1,6 +1,7 @@
 package com.YourHouseMyHouse.SwitchHouse.controller;
 
 import com.YourHouseMyHouse.SwitchHouse.dto.request.CreateHouseDTO;
+import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewDetailHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewRegionHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.service.interfaces.HouseService;
 import lombok.RequiredArgsConstructor;
@@ -23,6 +24,7 @@ public class HouseController {
     @PostMapping("/create")
     public ResponseEntity<Void> createHouse(@RequestPart List<MultipartFile> images, @RequestPart CreateHouseDTO createHouseDTO) {
         try {
+
             houseService.createHouse(images, createHouseDTO);
 
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -36,5 +38,12 @@ public class HouseController {
         List<ViewRegionHouseResDTO> viewRegionHouseResDTOList = houseService.viewRegionHouse(region);
 
         return new ResponseEntity<>(viewRegionHouseResDTOList, HttpStatus.OK);
+    }
+
+    @GetMapping("/detail/{houseId}")
+    public ResponseEntity<ViewDetailHouseResDTO> viewDetailHouse(@PathVariable Long houseId) {
+        ViewDetailHouseResDTO viewDetailHouseResDTO = houseService.viewDetailHouse(houseId);
+
+        return new ResponseEntity<>(viewDetailHouseResDTO, HttpStatus.OK);
     }
 }
