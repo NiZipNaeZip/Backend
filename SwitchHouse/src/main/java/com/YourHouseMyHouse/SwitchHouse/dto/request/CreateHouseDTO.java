@@ -20,6 +20,7 @@ public class CreateHouseDTO {
 
     private String houseName;
     private String houseIntroduction;
+    private String region;
 
     private List<String> precautionList;
 

@@ -23,6 +23,7 @@ public class CustomHouseMapper {
                 .tagAddress(parseTagAddress.parseTagAddressFromAddress(createHouseDTO.getAddressDTO().getAddress()))
                 .user(UserEntity.builder().userId(createHouseDTO.getUserId()).build())
                 .houseIntroduction(createHouseDTO.getHouseIntroduction())
+                .region(createHouseDTO.getRegion())
                 .messageLink(createHouseDTO.getMessageLink())
                 .build();
 
@@ -66,6 +67,7 @@ public class CustomHouseMapper {
 
     public ViewRegionHouseResDTO houseEntityToViewRegionHouseResDTO(HouseEntity house) {
         HouseInfoDTO houseInfoDTO = HouseInfoDTO.builder()
+                .availablePeople(house.getHouseInfo().getAvailablePeople())
                 .houseType(house.getHouseInfo().getHouseType())
                 .numberOfHouse(house.getHouseInfo().getNumberOfHouse())
                 .buildingType(house.getHouseInfo().getBuildingType())
@@ -77,6 +79,7 @@ public class CustomHouseMapper {
                 .address(house.getAddress())
                 .houseName(house.getHouseName())
                 .houseInfoDTO(houseInfoDTO)
+                .region(house.getRegion())
                 .filePath(house.getHouseImageList().get(0).getFilePath())
                 .build();
 

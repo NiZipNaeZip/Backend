@@ -18,7 +18,7 @@ public class PrecautionEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long precautionId;
 
-    @Column(length = 255)
+    @Column(length = 1000)
     private String comment;
 
     @ManyToOne(fetch = FetchType.LAZY)

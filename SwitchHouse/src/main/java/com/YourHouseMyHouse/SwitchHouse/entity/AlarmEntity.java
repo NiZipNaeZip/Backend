@@ -32,8 +32,7 @@ public class AlarmEntity extends BaseTimeEntity {
     private String comment;
 
     @Enumerated(EnumType.STRING)
-    @Column
-    //@ColumnDefault("UNREAD")
+    @Builder.Default
     private AlarmStatus alarmStatus = AlarmStatus.UNREAD;
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -25,7 +25,7 @@ public class HouseController {
         try {
             houseService.createHouse(images, createHouseDTO);
 
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.CREATED);
         }catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
         }

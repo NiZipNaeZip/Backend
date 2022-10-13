@@ -31,4 +31,7 @@ public class CreateUserDTO {
     
     //자기 소개
     private String introduction;
+
+    //지역
+    private String region;
 }
