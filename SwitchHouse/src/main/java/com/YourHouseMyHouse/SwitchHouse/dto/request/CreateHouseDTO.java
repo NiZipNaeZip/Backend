@@ -1,5 +1,6 @@
 package com.YourHouseMyHouse.SwitchHouse.dto.request;
 
+import com.YourHouseMyHouse.SwitchHouse.dto.HouseInfoDTO;
 import lombok.*;
 
 import java.util.List;

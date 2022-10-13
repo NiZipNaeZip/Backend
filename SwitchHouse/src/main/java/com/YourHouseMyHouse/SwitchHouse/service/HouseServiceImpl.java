@@ -4,6 +4,7 @@ import com.YourHouseMyHouse.SwitchHouse.common.handler.interfaces.ImageHandler;
 import com.YourHouseMyHouse.SwitchHouse.common.mapper.custom.CustomHouseMapper;
 import com.YourHouseMyHouse.SwitchHouse.common.mapper.custom.CustomPrecautionMapper;
 import com.YourHouseMyHouse.SwitchHouse.dto.request.CreateHouseDTO;
+import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewRegionHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.entity.*;
 import com.YourHouseMyHouse.SwitchHouse.repository.*;
 import com.YourHouseMyHouse.SwitchHouse.service.interfaces.HouseService;
@@ -75,5 +76,20 @@ public class HouseServiceImpl implements HouseService {
         }
 
         houseImageRepository.saveAll(houseImageEntityList);
+    }
+
+    @Override
+    public List<ViewRegionHouseResDTO> viewRegionHouse(String region) {
+        List<HouseEntity> houseEntityList = houseRepository.findByTagAddress(region);
+
+        List<ViewRegionHouseResDTO> viewRegionHouseResDTOList = new ArrayList<>();
+
+        for(HouseEntity house : houseEntityList) {
+            ViewRegionHouseResDTO viewRegionHouseResDTO = customHouseMapper.houseEntityToViewRegionHouseResDTO(house);
+
+            viewRegionHouseResDTOList.add(viewRegionHouseResDTO);
+        }
+
+        return viewRegionHouseResDTOList;
     }
 }

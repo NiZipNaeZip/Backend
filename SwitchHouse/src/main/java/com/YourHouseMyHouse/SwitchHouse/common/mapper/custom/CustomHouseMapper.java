@@ -1,12 +1,18 @@
 package com.YourHouseMyHouse.SwitchHouse.common.mapper.custom;
 
+import com.YourHouseMyHouse.SwitchHouse.common.handler.ParseTagAddress;
+import com.YourHouseMyHouse.SwitchHouse.dto.HouseInfoDTO;
 import com.YourHouseMyHouse.SwitchHouse.dto.request.CreateHouseDTO;
-import com.YourHouseMyHouse.SwitchHouse.dto.request.CreateUserDTO;
+import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewRegionHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.entity.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@RequiredArgsConstructor
 public class CustomHouseMapper {
+
+    private final ParseTagAddress parseTagAddress;
 
     public HouseEntity createHouseDTOToHouseEntity(CreateHouseDTO createHouseDTO) {
         HouseEntity houseEntity = HouseEntity.builder()
@@ -14,7 +20,7 @@ public class CustomHouseMapper {
                 .postalCode(createHouseDTO.getAddressDTO().getPostalCode())
                 .address(createHouseDTO.getAddressDTO().getAddress())
                 .detailedAddress(createHouseDTO.getAddressDTO().getDetailedAddress())
-                //.tagAddress() 태그 주소 파싱 로직 이후 추가
+                .tagAddress(parseTagAddress.parseTagAddressFromAddress(createHouseDTO.getAddressDTO().getAddress()))
                 .user(UserEntity.builder().userId(createHouseDTO.getUserId()).build())
                 .houseIntroduction(createHouseDTO.getHouseIntroduction())
                 .messageLink(createHouseDTO.getMessageLink())
@@ -58,4 +64,22 @@ public class CustomHouseMapper {
         return houseAmenity;
     }
 
+    public ViewRegionHouseResDTO houseEntityToViewRegionHouseResDTO(HouseEntity house) {
+        HouseInfoDTO houseInfoDTO = HouseInfoDTO.builder()
+                .houseType(house.getHouseInfo().getHouseType())
+                .numberOfHouse(house.getHouseInfo().getNumberOfHouse())
+                .buildingType(house.getHouseInfo().getBuildingType())
+                .numberOfRooms(house.getHouseInfo().getNumberOfRooms())
+                .build();
+
+        ViewRegionHouseResDTO viewRegionHouseResDTO = ViewRegionHouseResDTO.builder()
+                .houseId(house.getHouseId())
+                .address(house.getAddress())
+                .houseName(house.getHouseName())
+                .houseInfoDTO(houseInfoDTO)
+                .filePath(house.getHouseImageList().get(0).getFilePath())
+                .build();
+
+        return viewRegionHouseResDTO;
+    }
 }
