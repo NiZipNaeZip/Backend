@@ -23,7 +23,7 @@ public class HouseImageEntity extends BaseTimeEntity {
     private String fileOriginalName;
     private String filePath;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="house_id")
     private HouseEntity house;
 

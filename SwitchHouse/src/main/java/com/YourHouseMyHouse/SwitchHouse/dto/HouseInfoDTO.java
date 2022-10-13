@@ -1,4 +1,4 @@
-package com.YourHouseMyHouse.SwitchHouse.dto.request;
+package com.YourHouseMyHouse.SwitchHouse.dto;
 
 import lombok.*;
 

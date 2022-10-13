@@ -1,6 +1,7 @@
 package com.YourHouseMyHouse.SwitchHouse.controller;
 
 import com.YourHouseMyHouse.SwitchHouse.dto.request.CreateHouseDTO;
+import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewRegionHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.service.interfaces.HouseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,5 +29,12 @@ public class HouseController {
         }catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
         }
+    }
+
+    @GetMapping("/{region}")
+    public ResponseEntity<List<ViewRegionHouseResDTO>> viewRegionHouse(@PathVariable String region) {
+        List<ViewRegionHouseResDTO> viewRegionHouseResDTOList = houseService.viewRegionHouse(region);
+
+        return new ResponseEntity<>(viewRegionHouseResDTOList, HttpStatus.OK);
     }
 }
