@@ -1,9 +1,15 @@
 package com.YourHouseMyHouse.SwitchHouse.service;
 
+import com.YourHouseMyHouse.SwitchHouse.common.handler.PrecautionHandler;
 import com.YourHouseMyHouse.SwitchHouse.common.handler.interfaces.ImageHandler;
+import com.YourHouseMyHouse.SwitchHouse.common.mapper.HouseAmenityMapper;
+import com.YourHouseMyHouse.SwitchHouse.common.mapper.HouseInfoMapper;
 import com.YourHouseMyHouse.SwitchHouse.common.mapper.custom.CustomHouseMapper;
 import com.YourHouseMyHouse.SwitchHouse.common.mapper.custom.CustomPrecautionMapper;
+import com.YourHouseMyHouse.SwitchHouse.dto.HouseInfoDTO;
 import com.YourHouseMyHouse.SwitchHouse.dto.request.CreateHouseDTO;
+import com.YourHouseMyHouse.SwitchHouse.dto.request.HouseAmenityDTO;
+import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewDetailHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.dto.response.ViewRegionHouseResDTO;
 import com.YourHouseMyHouse.SwitchHouse.entity.*;
 import com.YourHouseMyHouse.SwitchHouse.repository.*;
@@ -22,6 +28,7 @@ import java.util.List;
 public class HouseServiceImpl implements HouseService {
 
     private final ImageHandler imageHandler;
+    private final PrecautionHandler precautionHandler;
 
     private final CustomHouseMapper customHouseMapper;
     private final CustomPrecautionMapper customPrecautionMapper;
@@ -91,5 +98,30 @@ public class HouseServiceImpl implements HouseService {
         }
 
         return viewRegionHouseResDTOList;
+    }
+
+    @Override
+    public ViewDetailHouseResDTO viewDetailHouse(Long houseId) {
+        HouseEntity houseEntity = houseRepository.findByIdWithAmenityANDInfoANDImage(houseId);
+
+        HouseInfoDTO houseInfoDTO = HouseInfoMapper.INSTANCE.toDTO(houseEntity.getHouseInfo());
+        HouseAmenityDTO houseAmenityDTO = HouseAmenityMapper.INSTANCE.toDTO(houseEntity.getHouseAmenities());
+        List<String> precautionList = precautionHandler.precautionEntityListToStringList(houseEntity.getPrecautionList());
+        List<String> images = imageHandler.exactFilePath(houseEntity.getHouseImageList());
+
+        ViewDetailHouseResDTO viewDetailHouseResDTO = ViewDetailHouseResDTO.builder()
+                .houseId(houseEntity.getHouseId())
+                .userId(houseEntity.getUser().getUserId())
+                .houseInfoDTO(houseInfoDTO)
+                .houseAmenityDTO(houseAmenityDTO)
+                .houseName(houseEntity.getHouseName())
+                .houseIntroduction(houseEntity.getHouseIntroduction())
+                .precautionList(precautionList)
+                .address(houseEntity.getAddress())
+                .region(houseEntity.getRegion())
+                .imagePaths(images)
+                .build();
+
+        return viewDetailHouseResDTO;
     }
 }

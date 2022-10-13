@@ -1,5 +1,6 @@
 package com.YourHouseMyHouse.SwitchHouse.entity;
 
+import com.YourHouseMyHouse.SwitchHouse.common.entity.BaseTimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Precaution")
-public class PrecautionEntity {
+public class PrecautionEntity extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

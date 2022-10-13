@@ -6,6 +6,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface AlarmService {
     void sendNotice(SendNoticeReqDTO sendNoticeReqDTO);
-    void acceptNotice();
-    void refuseNotice();
+    void acceptNotice(Long alarmId);
+    void refuseNotice(Long alarmId);
 }

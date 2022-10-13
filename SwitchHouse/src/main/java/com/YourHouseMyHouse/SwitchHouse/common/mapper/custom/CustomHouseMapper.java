@@ -44,22 +44,14 @@ public class CustomHouseMapper {
 
     public HouseAmenityEntity createHouseDTOTOHouseAmenityEntity(CreateHouseDTO createHouseDTO) {
         HouseAmenityEntity houseAmenity = HouseAmenityEntity.builder()
-                .bed(createHouseDTO.getHouseAmenityDTO().getBed())
-                .bathtub(createHouseDTO.getHouseAmenityDTO().getBathtub())
-                .kitchen(createHouseDTO.getHouseAmenityDTO().getKitchen())
-                .elevator(createHouseDTO.getHouseAmenityDTO().getElevator())
-                .microwave(createHouseDTO.getHouseAmenityDTO().getMicrowave())
-                .refrigerator(createHouseDTO.getHouseAmenityDTO().getRefrigerator())
-                .airConditioner(createHouseDTO.getHouseAmenityDTO().getAirConditioner())
-                .wifi(createHouseDTO.getHouseAmenityDTO().getWifi())
-                .tv(createHouseDTO.getHouseAmenityDTO().getWifi())
-                .hotWater(createHouseDTO.getHouseAmenityDTO().getHotWater())
-                .waterPurifier(createHouseDTO.getHouseAmenityDTO().getWaterPurifier())
-                .cookingUtensils(createHouseDTO.getHouseAmenityDTO().getCookingUtensils())
-                .tableware(createHouseDTO.getHouseAmenityDTO().getTableware())
-                .dryer(createHouseDTO.getHouseAmenityDTO().getDryer())
-                .iron(createHouseDTO.getHouseAmenityDTO().getIron())
-                .washingMachine(createHouseDTO.getHouseAmenityDTO().getWashingMachine())
+                .beach(createHouseDTO.getHouseAmenityDTO().getBeach())
+                .olleTrail(createHouseDTO.getHouseAmenityDTO().getOlleTrail())
+                .pickingTangerine(createHouseDTO.getHouseAmenityDTO().getPickingTangerine())
+                .activity(createHouseDTO.getHouseAmenityDTO().getActivity())
+                .sportsEquipment(createHouseDTO.getHouseAmenityDTO().getSportsEquipment())
+                .waterPlayEquipment(createHouseDTO.getHouseAmenityDTO().getWaterPlayEquipment())
+                .culturalLife(createHouseDTO.getHouseAmenityDTO().getCulturalLife())
+                .hotPlace(createHouseDTO.getHouseAmenityDTO().getHotPlace())
                 .build();
 
         return houseAmenity;
