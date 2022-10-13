@@ -72,7 +72,8 @@ public class CustomHouseMapper {
                 .houseName(house.getHouseName())
                 .houseInfoDTO(houseInfoDTO)
                 .region(house.getRegion())
-                .filePath(house.getHouseImageList().get(0).getFilePath())
+                //.filePath(house.getHouseImageList().get(0).getFilePath())
+                .filePath(house.getHouseImageList().get(0).getFileName())
                 .build();
 
         return viewRegionHouseResDTO;
