@@ -19,7 +19,7 @@ public class HouseEntity extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long houseId;
 
-    @Column(length = 30)
+    @Column(length = 255)
     private String houseName;
 
     @Column(length = 8)
@@ -34,11 +34,14 @@ public class HouseEntity extends BaseTimeEntity {
     @Column(length = 20)
     private String tagAddress;
 
-    @Column(length = 255)
+    @Column(length = 1000)
     private String houseIntroduction;
 
+    @Column(length = 10)
+    private String region;
+
     //오픈 카카오톡 링크
-    @Column(length = 50)
+    @Column(length = 100)
     private String messageLink;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -14,4 +14,5 @@ public class ViewRegionHouseResDTO {
     private String houseName;
     private String address;
     private String filePath;
+    private String region;
 }

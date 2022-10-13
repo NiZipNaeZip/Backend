@@ -80,7 +80,7 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public List<ViewRegionHouseResDTO> viewRegionHouse(String region) {
-        List<HouseEntity> houseEntityList = houseRepository.findByTagAddress(region);
+        List<HouseEntity> houseEntityList = houseRepository.findALLByRegion(region);
 
         List<ViewRegionHouseResDTO> viewRegionHouseResDTOList = new ArrayList<>();
 

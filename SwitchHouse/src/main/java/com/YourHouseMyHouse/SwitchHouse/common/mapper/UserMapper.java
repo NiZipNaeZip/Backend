@@ -15,5 +15,6 @@ public interface UserMapper {
     @Mapping(target = "userId", ignore = true)
     @Mapping(target = "sendAlarmList", ignore = true)
     @Mapping(target = "receiveAlarmList", ignore = true)
+    @Mapping(target = "house", ignore = true)
     UserEntity toEntity(CreateUserDTO createUserDTO);
 }

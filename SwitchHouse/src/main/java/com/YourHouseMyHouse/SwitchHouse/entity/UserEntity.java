@@ -28,7 +28,7 @@ public class UserEntity extends BaseTimeEntity {
     @Column(length= 20)
     private String password;
 
-    @Column(length = 20)
+    @Column(length = 50)
     private String nickName;
 
     @Column(length = 8)
@@ -46,8 +46,11 @@ public class UserEntity extends BaseTimeEntity {
     @Column(length = 20)
     private String messageLink;
 
-    @Column(length = 255)
+    @Column(length = 10000)
     private String introduction;
+
+    @Column(length = 10)
+    private String region;
 
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Builder.Default
