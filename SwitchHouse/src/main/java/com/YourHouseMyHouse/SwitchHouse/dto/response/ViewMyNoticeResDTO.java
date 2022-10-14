@@ -12,6 +12,7 @@ public class ViewMyNoticeResDTO {
 
     private AlarmStatus alarmStatus;
     private String userName;
+    private String address;
 
     private ViewMyNoticeImageResDTO viewMyNoticeImageResDTO;
 }
