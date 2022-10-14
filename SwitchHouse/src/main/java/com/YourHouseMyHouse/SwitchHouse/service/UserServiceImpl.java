@@ -58,6 +58,7 @@ public class UserServiceImpl implements UserService {
             ViewMyNoticeResDTO viewMyNoticeResDTO = ViewMyNoticeResDTO.builder()
                     .alarmStatus(alarm.getAlarmStatus())
                     .userName(houseEntity.getUser().getNickName())
+                    .address(houseEntity.getAddress())
                     .viewMyNoticeImageResDTO(viewMyNoticeImageResDTO)
                     .build();
 
