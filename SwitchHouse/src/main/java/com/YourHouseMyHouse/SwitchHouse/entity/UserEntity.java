@@ -43,7 +43,7 @@ public class UserEntity extends BaseTimeEntity {
     @Column(length = 5)
     private Boolean certified;
 
-    @Column(length = 20)
+    @Column(length = 1000)
     private String messageLink;
 
     @Column(length = 10000)
