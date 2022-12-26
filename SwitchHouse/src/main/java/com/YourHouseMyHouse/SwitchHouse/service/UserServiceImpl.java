@@ -50,7 +50,8 @@ public class UserServiceImpl implements UserService {
                     .houseName(houseEntity.getHouseName())
                     .startDate(alarm.getStartDate())
                     .endDate(alarm.getEndDate())
-                    .filePath(houseEntity.getHouseImageList().get(0).getFilePath())
+                    //.filePath(houseEntity.getHouseImageList().get(0).getFilePath())
+                    .filePath(houseEntity.getHouseImageList().get(0).getFileName())
                     .messageLink(houseEntity.getMessageLink())
                     .build();
 

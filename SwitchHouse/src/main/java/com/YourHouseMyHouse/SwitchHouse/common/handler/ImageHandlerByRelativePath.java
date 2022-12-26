@@ -39,7 +39,8 @@ public class ImageHandlerByRelativePath implements ImageHandler {
 
             // 파일을 저장할 세부 경로 지정
             //String path = "src" + File.separator + "main" + File.separator + "resources" + File.separator +"images" + File.separator + "BoardAttach" + File.separator + current_date;
-            String path = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static";
+            //String path = "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static";
+            String path = File.separator + "home" + File.separator + "ec2-user" + File.separator + "Backend" + File.separator + "images" + File.separator + "static";
             File file = new File(path);
 
             // 디렉터리가 존재하지 않을 경우
@@ -101,7 +102,7 @@ public class ImageHandlerByRelativePath implements ImageHandler {
         List<String> stringList = new ArrayList<>();
 
         for(HouseImageEntity houseImage : houseImageEntityList) {
-            stringList.add(houseImage.getFilePath());
+            stringList.add(houseImage.getFileName());
         }
 
         return stringList;

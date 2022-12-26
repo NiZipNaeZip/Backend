@@ -9,7 +9,6 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 public class ViewMyNoticeResDTO {
-   
     private Long alarm_id;	
     private AlarmStatus alarmStatus;
     private String userName;
