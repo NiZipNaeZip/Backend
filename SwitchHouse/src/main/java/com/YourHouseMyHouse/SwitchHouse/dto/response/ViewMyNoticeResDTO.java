@@ -10,6 +10,7 @@ import lombok.*;
 @ToString
 public class ViewMyNoticeResDTO {
 
+    private Long alarm_id;
     private AlarmStatus alarmStatus;
     private String userName;
     private String address;
