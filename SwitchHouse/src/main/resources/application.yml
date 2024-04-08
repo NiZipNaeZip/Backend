@@ -1,0 +1,18 @@
+spring:
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 200MB
+      max-request-size: 200MB
+  jpa:
+    database: mysql
+    database-platform : org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql : true
+    properties :
+      hibernate :
+        format_sql : true
+        show_sql : true
+  datasource :
+    url : jdbc:mysql://localhost:3306/switchhouse?autoReconnect=true
+    username : root
+    password : root
