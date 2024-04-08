@@ -12,7 +12,3 @@ spring:
       hibernate :
         format_sql : true
         show_sql : true
-  datasource :
-    url : jdbc:mysql://localhost:3306/switchhouse?autoReconnect=true
-    username : root
-    password : root
